@@ -1,11 +1,87 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Button1 from "../components/button1.astro";
+import Button2 from "../components/button2.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="landing">
+		<div class="titlecard">
+			<h3>Hello, my name is</h3>
+			<h1>Andrew kehler</h1>
+			<div class="buttons">
+				<Button1>Projects</Button1>
+				<Button2>Resume</Button2>
+			</div>
+			
+		</div>
+		<div class="headshot">
+			<img width="400" height="400" src="/src/assets/AndrewKehler.png" alt="">
+		</div>
+
+	</div>
+</body>
+</html>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+	
+
+	.graduate-regular {
+		font-family: "Graduate", serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+	body{
+		background-color: rgb(250, 250, 250);
+		margin: 0;
+	}
+	.landing{
+		background-color: rgb(255, 255, 255);
+		width: 100vw;
+		height: 45vw;
+		display: flex;
+		align-items: center;
+		/* justify-content: space-around; */
+
+	}
+	.titlecard{
+		margin: 0 0 -5% 5%;
+		position: relative;
+		z-index: 1;
+	}	
+	.titlecard>h3{
+		margin: 0 0 0 20px;
+		font-size: clamp(.5rem, 2.5vw, 3.3rem);
+		font-weight: 400;
+		font-family:"Intel One Mono", monospace;
+	}
+	.titlecard>h1{
+		margin: 0 0 40px 0;
+		font-size: clamp(2rem, calc(6vw + 1rem), 8rem);
+		font-family: "Graduate", serif;
+		font-weight: 100;
+		color: #4988DC;
+	}
+	.buttons{
+		display: flex;
+		gap: min(4vw,40px);
+	}
+	.headshot{
+		position: absolute;
+		z-index: 0;
+		right: 0;
+	}
+	.headshot>img{
+		width: clamp(100px, 40vw, 1000px);
+		height: auto;
+		translate: 5% 10% ;
+	}
+
+</style>
