@@ -1,6 +1,7 @@
 ---
 import Button1 from "../components/button1.astro";
 import Button2 from "../components/button2.astro";
+import HeaderSquares from "../components/header-squares.astro";
 ---
 
 <!DOCTYPE html>
@@ -23,6 +24,7 @@ import Button2 from "../components/button2.astro";
 		</div>
 		<div class="headshot">
 			<img width="400" height="400" src="/src/assets/AndrewKehler.png" alt="">
+			<HeaderSquares></HeaderSquares>
 		</div>
 
 	</div>
@@ -41,6 +43,7 @@ import Button2 from "../components/button2.astro";
 	body{
 		background-color: rgb(250, 250, 250);
 		margin: 0;
+		overflow: hidden;
 	}
 	.landing{
 		background-color: rgb(255, 255, 255);
@@ -49,6 +52,7 @@ import Button2 from "../components/button2.astro";
 		display: flex;
 		align-items: center;
 		/* justify-content: space-around; */
+		position: relative;
 
 	}
 	.titlecard{
@@ -74,7 +78,7 @@ import Button2 from "../components/button2.astro";
 		gap: min(4vw,40px);
 	}
 	.headshot{
-		position: absolute;
+		position:absolute;
 		z-index: 0;
 		right: 0;
 	}
