@@ -10,20 +10,22 @@ import HeaderSquares from "../components/header-squares.astro";
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
 	<div class="landing">
 		<div class="titlecard">
 			<h3>Hello, my name is</h3>
-			<h1>Andrew kehler</h1>
+			<h1>Andrew Kehler</h1>
 			<div class="buttons">
 				<Button1>Projects</Button1>
 				<Button2>Resume</Button2>
 			</div>
 			
 		</div>
-		<div class="headshot">
-			<img width="400" height="400" src="/src/assets/AndrewKehler.png" alt="">
+		<div class="headshot-contain">
+			<img class="headshot" width="400" height="400" src="/src/assets/AndrewKehler.png" alt="">
 			<HeaderSquares></HeaderSquares>
 		</div>
 
@@ -65,27 +67,50 @@ import HeaderSquares from "../components/header-squares.astro";
 		font-size: clamp(.5rem, 2.5vw, 3.3rem);
 		font-weight: 400;
 		font-family:"Intel One Mono", monospace;
+		
 	}
 	.titlecard>h1{
 		margin: 0 0 40px 0;
-		font-size: clamp(2rem, calc(6vw + 1rem), 8rem);
+		font-size: clamp(2rem, calc(5vw + 1rem), 8rem);
 		font-family: "Graduate", serif;
 		font-weight: 100;
 		color: #4988DC;
+		background-color: rgb(255, 255, 255);
+		/* border-radius: 40px; */
 	}
 	.buttons{
 		display: flex;
 		gap: min(4vw,40px);
 	}
-	.headshot{
+	.headshot-contain{
 		position:absolute;
 		z-index: 0;
 		right: 0;
 	}
-	.headshot>img{
+	.headshot{
 		width: clamp(100px, 40vw, 1000px);
 		height: auto;
 		translate: 5% 10% ;
 	}
 
 </style>
+
+<script>
+	const headshot = document.querySelector(".headshot");
+
+	gsap.fromTo(headshot,
+		{
+			opacity:0,
+			x:20,
+			y:20
+		},
+		{
+			opacity:1,
+			x:0,
+			y:0,
+			duration:1.5,
+			delay:.3
+
+		})
+
+</script>

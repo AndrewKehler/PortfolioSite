@@ -1,21 +1,24 @@
 ---
 const squares = [
     {id:0, width:"80%", colour:"#E2EEF2", top: "20%", left:"10%"},
-    {id:1, width:"24%", colour: "#969BCB", top:"36%", left:"5%"},
-    {id:1, width:"24%", colour: "#969BCB", top:"76%", left:"5%"},
-    {id:1, width:"24%", colour: "#969BCB", top:"6%", left:"60%"},
-    {id:1, width:"24%", colour: "#969BCB", top:"63%", left:"72%"},
-    {id:2, width:"13%", colour: "#A2AAF3", top:"11%", left:"20%"},
-    {id:2, width:"13%", colour: "#A2AAF3", top:"-2%", left:"40%"},
-      {id:2, width:"13%", colour: "#A2AAF3", top:"90%", left:"-14%"},
-    {id:3, width:"11%", colour:"#CED2F6", top:"63%", left:"24%"}
+    {id:1, width:"24%", colour: "#969BCB", top:"33%", left:"5%"},
+    {id:2, width:"24%", colour: "#969BCB", top:"76%", left:"5%"},
+    {id:3, width:"24%", colour: "#969BCB", top:"6%", left:"60%"},
+    {id:4, width:"24%", colour: "#969BCB", top:"63%", left:"72%"},
+    {id:5, width:"13%", colour: "#A2AAF3", top:"11%", left:"20%"},
+    {id:6, width:"13%", colour: "#A2AAF3", top:"-2%", left:"40%"},
+    {id:7, width:"13%", colour: "#A2AAF3", top:"90%", left:"-14%"},
+    {id:8, width:"11%", colour:"#CED2F6", top:"50%", left:"65%"},
+    {id:9, width:"11%", colour:"#CED2F6", top:"70%", left:"-8%"},
+    {id:10, width:"11%", colour:"#CED2F6", top:"33%", left:"83%"},
+    {id:11, width:"11%", colour:"#CED2F6", top:"63%", left:"24%"}
 ];
 ---
-
 <div class="container" aria-hidden="true">
     {squares.map((square) =>(
         <div
-            class=`${square.id}`
+            id=`${square.id}`
+            class="header-square"
             style=`
                 position:absolute;
                 width:${square.width}; 
@@ -39,16 +42,36 @@ const squares = [
         
         
     }
-    .1{
-        background-color: #969BCB;
-        height: auto;
-    }
-    .2{
-        background-color: #A2AAF3;
-        height: auto;
-    }
-    .3{
-        background-color: #CED2F6;
-        height: auto;
-    }
 </style>
+
+<script>
+    const squares = document.querySelectorAll(".header-square");
+
+    squares.forEach((square)=> {
+        const delay = 1.5;
+        const startX = -150;
+        const startY = -150;
+        // parseFloat()
+
+        gsap.fromTo(square, 
+            {
+                opacity:0,
+                x:startX,
+                y:startY
+            },
+            {
+                opacity:1,
+                x:0,
+                y:0,
+                duration:1,
+                delay:delay
+                
+            }
+        )
+
+    })
+
+    
+
+</script>
+
