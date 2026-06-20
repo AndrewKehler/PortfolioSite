@@ -77,10 +77,71 @@ import HeaderSquares from "../components/header-squares.astro";
 
 </style>
 
+<style>
+    @media screen and (max-width:780px) {
+        .landing{
+            justify-content: center;
+            height: calc(60vw + 30vh);
+
+        }
+        .titlecard{
+            margin-top: 50vw;
+        }
+        .titlecard>h1{
+            font-size: 10vw;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding-right: 20px;
+        }
+        .titlecard>h3{
+            font-size: 6vw;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding-right: 20px;
+        }
+        .headshot-contain{
+            right: 0;
+            top: 4%;
+            justify-self:end;
+            width: 80vw;
+            height: 80vw;
+        }
+        .headshot{
+            width: 80vw;
+            height: auto;
+        }
+        .buttons{
+            justify-content: center ;
+        }
+            
+    }
+</style>
+
 <script>
     const introTimeline = gsap.timeline();  
-
-    introTimeline.fromTo(".headshot",
+    const titleCardElements =  document.querySelector(".titlecard")?.children;
+    const subHead = titleCardElements ? titleCardElements[0]: null;
+    const header = titleCardElements ? titleCardElements[1]: null;
+    const buttons = titleCardElements ? titleCardElements[2]: null;
+    introTimeline.fromTo( subHead,
+        {
+            opacity:0
+        },
+        {
+            opacity:1,
+            duration:1,
+            delay:.3
+        })
+    .fromTo( header,
+        {
+            opacity:0,
+            x:-20
+        },
+        {
+            opacity:1,
+            duration:1,
+            x:0,
+            delay:.3
+        })
+    .fromTo(".headshot",
         {
             opacity:0,
             x:20,
@@ -93,7 +154,7 @@ import HeaderSquares from "../components/header-squares.astro";
             duration:1,
             delay:.3
 
-        })
+        }, "<")
     .fromTo( ".header-square",
         {
             opacity:0,
@@ -109,6 +170,27 @@ import HeaderSquares from "../components/header-squares.astro";
             stagger:0
             
         })
+    .fromTo( buttons?.children[0],
+        {
+            opacity:0,
+            x:-20
+        },
+        {
+            opacity:1,
+            duration:1,
+            x:0,
+            delay:.3
+        }, "<")
+    .fromTo( buttons?.children[1],
+        {
+            opacity:0,
+            x:20
+        },
+        {
+            opacity:1,
+            duration:1,
+            x:0,
+        }, "<")
 
 
 </script>
