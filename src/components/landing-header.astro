@@ -2,6 +2,7 @@
 import Button1 from "../components/button1.astro";
 import Button2 from "../components/button2.astro";
 import HeaderSquares from "../components/header-squares.astro";
+import headshot from "../assets/AndrewKehler.png";
 ---
 <div class="landing">
     <div class="titlecard">
@@ -14,7 +15,7 @@ import HeaderSquares from "../components/header-squares.astro";
         
     </div>
     <div class="headshot-contain">
-        <img class="headshot" width="400" height="400" src="/src/assets/AndrewKehler.png" alt="" draggable="false">
+        <img class="headshot" width="400" height="400" src=`{headshot}` alt="" draggable="false">
         <HeaderSquares></HeaderSquares>
     </div>
 
