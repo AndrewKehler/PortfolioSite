@@ -14,7 +14,7 @@ import HeaderSquares from "../components/header-squares.astro";
         
     </div>
     <div class="headshot-contain">
-        <img class="headshot" width="400" height="400" src="/src/assets/AndrewKehler.png" alt="">
+        <img class="headshot" width="400" height="400" src="/src/assets/AndrewKehler.png" alt="" draggable="false">
         <HeaderSquares></HeaderSquares>
     </div>
 
@@ -73,6 +73,8 @@ import HeaderSquares from "../components/header-squares.astro";
 	.headshot{
 		width: clamp(100px, 40vw, 1000px);
 		height: auto;
+        user-select: none;
+        pointer-events: none;
 	}
 
 </style>

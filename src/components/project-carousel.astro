@@ -1,0 +1,91 @@
+---
+---
+
+<div class="container">
+    <div class="header">
+        <div class="spacer"></div>
+        <h1>Recent Projects</h1>
+    </div>
+    <div class="carousel-contain">
+        <div class="carousel-track">
+            <div class="project">1</div>
+            <div class="project">2</div>
+            <div class="project">3</div>
+            <div class="project"></div>
+            <div class="project"></div>
+            <div class="project"></div>    
+        </div>
+        
+        
+    </div>
+</div>
+
+<style>
+    .container{}
+    .header{
+        display: flex;
+        align-items: center;
+        gap: 3%;
+    }
+    .spacer{
+        background-color: #4988DC;
+        height: 5px;
+        width: 5em;
+        margin-left: 4%;
+    }
+    h1{
+        font-family:"Intel One Mono", monospace;
+        font-weight: 400;
+    }
+    .carousel-container{
+        width: 100%;
+        overflow: hidden;
+    }
+    .carousel-track{     
+         background: white;   
+        height: 350px;
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        
+    }
+    .carousel-track>:nth-child(odd){
+        width: 300px;
+        height: 300px;
+        background: rgb(159, 179, 197);
+        flex: 0 0 300px;
+    }
+    .carousel-track>:nth-child(even){
+        width: 300px;
+        height: 300px;
+        background: rgb(205, 215, 223);
+        flex: 0 0 300px;
+    }
+
+</style>
+
+<script>
+    import {horizontalLoop} from '../utils/horizontalLoop';
+    const projects = gsap.utils.toArray('.project');
+
+    const loop = horizontalLoop(projects, {
+        pause:false,
+        repeat:-1,
+        speed:1,
+        paddingRight: 20,
+        reversed: true
+    });
+
+    projects.forEach((prjct: { addEventListener: (arg0: string, arg1: () => void) => void; })=> {
+        prjct.addEventListener("mouseenter", () => {
+            gsap.to(loop, { timeScale: -.5, duration: 0.5, overwrite: true });
+            gsap.to(prjct, { scale: 1.1, duration: 0.5, ease: "power2.out" });
+        });
+
+        prjct.addEventListener("mouseleave", () => {
+            gsap.to(loop, { timeScale: -1, duration: 0.5, overwrite: true });
+            gsap.to(prjct, { scale: 1, duration: 0.3, ease: "power2.out" });
+        });
+    });
+
+</script>

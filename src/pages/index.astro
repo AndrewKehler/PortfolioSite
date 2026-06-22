@@ -1,5 +1,7 @@
 ---
 import LandingHeader from "../components/landing-header.astro"
+import ProjectCarousel from "../components/project-carousel.astro"
+
 ---
 
 <!DOCTYPE html>
@@ -13,6 +15,7 @@ import LandingHeader from "../components/landing-header.astro"
 </head>
 <body>
 	<LandingHeader></LandingHeader>
+	<ProjectCarousel></ProjectCarousel>
 </body>
 </html>
 
@@ -27,7 +30,8 @@ import LandingHeader from "../components/landing-header.astro"
 	body{
 		background-color: rgb(250, 250, 250);
 		margin: 0;
-		overflow: hidden;
+		overflow-x: hidden;
+		
 	}
 
 </style>
