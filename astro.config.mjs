@@ -12,5 +12,5 @@ export default defineConfig({
     }
   },
   site: 'https://andrewkehler.github.io',
-  base: '/portfolio-site'
+  base: '/PortfolioSite'
 });
