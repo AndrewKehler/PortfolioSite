@@ -10,5 +10,7 @@ export default defineConfig({
     preview: {
       allowedHosts: true
     }
-  }
+  },
+  site: 'https://andrewkehler.github.io',
+  base: '/portfolio-site'
 });
