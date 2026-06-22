@@ -21,7 +21,9 @@
 </div>
 
 <style>
-    .container{}
+    .container{
+        overflow: hidden;
+    }
     .header{
         display: flex;
         align-items: center;
@@ -29,37 +31,38 @@
     }
     .spacer{
         background-color: #4988DC;
-        height: 5px;
-        width: 5em;
-        margin-left: 4%;
+        height: .4vw;
+        width: 5.5vw;
+        margin: 3px 0 0 4%;
     }
     h1{
         font-family:"Intel One Mono", monospace;
         font-weight: 400;
+        font-size: clamp(.5rem, 2.5vw, 3.3rem)
     }
     .carousel-container{
         width: 100%;
         overflow: hidden;
     }
     .carousel-track{     
-         background: white;   
-        height: 350px;
+        background: white;   
+        height: 25vw;
         display: flex;
-        gap: 50px;
+        gap: 3vw;
         align-items: center;
         
     }
     .carousel-track>:nth-child(odd){
-        width: 300px;
-        height: 300px;
+        width: 20vw;
+        height: 20vw;
         background: rgb(159, 179, 197);
-        flex: 0 0 300px;
+        flex: 0 0 20vw;
     }
     .carousel-track>:nth-child(even){
-        width: 300px;
-        height: 300px;
+        width: 20vw;
+        height: 20vw;
         background: rgb(205, 215, 223);
-        flex: 0 0 300px;
+        flex: 0 0 20vw;
     }
 
 </style>
@@ -68,23 +71,27 @@
     import {horizontalLoop} from '../utils/horizontalLoop';
     const projects = gsap.utils.toArray('.project');
 
+    const track = document.querySelector(".carousel-track");
+    const gap = track ? window.getComputedStyle(track).gap: "0"; 
+    const gapVal = parseFloat(gap) || 0;
+
     const loop = horizontalLoop(projects, {
         pause:false,
         repeat:-1,
         speed:1,
-        paddingRight: 50,
+        paddingRight: gapVal,
         reversed: true
     });
 
     projects.forEach((prjct: { addEventListener: (arg0: string, arg1: () => void) => void; })=> {
         prjct.addEventListener("mouseenter", () => {
             gsap.to(loop, { timeScale: -.5, duration: 0.5, overwrite: true });
-            gsap.to(prjct, { scale: 1.1, duration: 0.5, ease: "power2.out" });
+            gsap.to(prjct, { scale: 1.1, duration: 0.5, ease: "power2.out", overwrite: "auto" });
         });
 
         prjct.addEventListener("mouseleave", () => {
             gsap.to(loop, { timeScale: -1, duration: 0.5, overwrite: true });
-            gsap.to(prjct, { scale: 1, duration: 0.3, ease: "power2.out" });
+            gsap.to(prjct, { scale: 1, duration: 0.3, ease: "power2.out",overwrite: "auto"  });
         });
     });
 
