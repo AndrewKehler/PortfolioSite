@@ -67,6 +67,27 @@
 
 </style>
 
+<style>
+    @media screen and (max-width:780px){
+        .carousel-track{ 
+            height: 50vw;
+            gap: 5vw;
+        }
+        .carousel-track>:nth-child(odd){
+            width: 40vw;
+            height: 40vw;
+            flex: 0 0 40vw;
+        }
+        .carousel-track>:nth-child(even){
+            width: 40vw;
+            height: 40vw;
+            flex: 0 0 40vw;
+        }
+
+    }
+
+</style>
+
 <script>
     import {horizontalLoop} from '../utils/horizontalLoop';
     const projects = gsap.utils.toArray('.project');
