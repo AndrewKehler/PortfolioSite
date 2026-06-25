@@ -1,0 +1,69 @@
+---
+import ProjectCarousel from "./project-carousel.astro";
+import sky from "../assets/sky.png";
+import mtn1 from "../assets/mtn1.png";
+import mtn2 from "../assets/mtn2.png";
+import mtn3 from "../assets/mtn3.png";
+import mtn4 from "../assets/mtn4.png";
+import me from "../assets/me.png";
+
+---
+
+<div class="container">
+    
+    <div class="scene">
+        <div class="carousel-container">
+            <ProjectCarousel></ProjectCarousel>
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="10">
+                <img src={sky.src} alt="">
+            </div>    
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={mtn4.src} alt="">
+            </div>    
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={mtn3.src} alt="">
+            </div>    
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={mtn2.src} alt="">
+            </div>    
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={mtn1.src} alt="">
+            </div>    
+        </div>
+        <div class="scroll-layer">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={me.src} alt="">
+            </div>    
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .carousel-container{
+        z-index: 1;
+        position: absolute;
+    }
+    .scene{
+        position: relative;
+        width: 100vw;
+        height: 100vw;
+    }
+    img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+</style>
