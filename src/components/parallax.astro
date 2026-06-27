@@ -15,34 +15,30 @@ import me from "../assets/me.png";
         <div class="carousel-container">
             <ProjectCarousel></ProjectCarousel>
         </div>
-        <div class="sky">
-            <div class="mouse-layer" data-depth="10">
-                <img src={sky.src} alt="">
+        <img src={sky.src} alt="" class="sky">
+        <div class="scroll-layer m4">  
+            <div class="mouse-layer" data-depth="20">
+                <img src={mtn4.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer">  
+        <div class="scroll-layer m3">  
             <div class="mouse-layer" data-depth="20">
-                <img src={mtn4.src} alt="">
+                <img src={mtn3.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer">  
+        <div class="scroll-layer m2">  
             <div class="mouse-layer" data-depth="20">
-                <img src={mtn3.src} alt="">
+                <img src={mtn2.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer">  
+        <div class="scroll-layer m1">  
             <div class="mouse-layer" data-depth="20">
-                <img src={mtn2.src} alt="">
+                <img src={mtn1.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer">  
+        <div class="scroll-layer me">  
             <div class="mouse-layer" data-depth="20">
-                <img src={mtn1.src} alt="">
-            </div>    
-        </div>
-        <div class="scroll-layer">  
-            <div class="mouse-layer" data-depth="20">
-                <img src={me.src} alt="">
+                <img src={me.src} alt="" class="foreground-element">
             </div>    
         </div>
     </div>
@@ -55,13 +51,36 @@ import me from "../assets/me.png";
         z-index: 1;
         position: absolute;
     }
+    .m3,.m2,.m1,me{
+        z-index: 2;
+    }
     .scene{
         position: relative;
         width: 100vw;
         height: 100vw;
         overflow: hidden;
     }
-    img{
+
+    .scroll-layer, 
+    .mouse-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    }
+
+    .foreground-element{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100vw;
+        height: 100%;
+        object-fit: cover;
+    }
+    .sky{
         position: absolute;
         top: 0;
         left: 0;
@@ -88,9 +107,9 @@ import me from "../assets/me.png";
             scrub:true
         }
     });
-    tl.fromTo("img", 
+    tl.fromTo(".scroll-layer", 
         {y:500},
-        {y:-500} 
+        {y:-300} 
     );
 
 </script>
