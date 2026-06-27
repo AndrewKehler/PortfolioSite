@@ -15,7 +15,7 @@ import me from "../assets/me.png";
         <div class="carousel-container">
             <ProjectCarousel></ProjectCarousel>
         </div>
-        <div class="scroll-layer">  
+        <div class="sky">
             <div class="mouse-layer" data-depth="10">
                 <img src={sky.src} alt="">
             </div>    
@@ -59,11 +59,38 @@ import me from "../assets/me.png";
         position: relative;
         width: 100vw;
         height: 100vw;
+        overflow: hidden;
     }
     img{
         position: absolute;
         top: 0;
         left: 0;
         z-index: 0;
+        width: 100vw;
+        height: 100%;
+        object-fit: cover;
     }
 </style>
+
+<script>
+    
+    const scene = document.querySelector(".scene");
+    const scnHeight = scene ? window.getComputedStyle(scene).height: "0";
+    const height = parseFloat(scnHeight);
+
+    gsap.registerPlugin(ScrollTrigger);
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".scene",
+            start:"top top",
+            end: "+="+scnHeight,
+            pin: true,
+            scrub:true
+        }
+    });
+    tl.fromTo("img", 
+        {y:500},
+        {y:-500} 
+    );
+
+</script>
