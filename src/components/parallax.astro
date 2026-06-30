@@ -46,9 +46,11 @@ import me from "../assets/me.png";
 </div>
 
 <style>
+    body{}
     .parallax-container{
         box-sizing: border-box;
         overflow: hidden;
+    
     }
     .carousel-container{
         z-index: 1;
@@ -62,6 +64,7 @@ import me from "../assets/me.png";
         width: 100vw;
         height: 100vw;
         overflow: hidden;
+        
     }
 
     .scroll-layer, 
@@ -91,24 +94,43 @@ import me from "../assets/me.png";
         width: 100vw;
         height: 100%;
         object-fit: cover;
-        /* clip-path: inset(0px 0px var(--crop-bottom, 0px) 0px); */
+        
     }
 </style>
 
 <script>
-
-
-    
-
-
-
+    gsap.registerPlugin(ScrollTrigger);
+    //get height of header to define pin start
     const header = document.querySelector(".header");
     const headerHeight = header ? window.getComputedStyle(header).height: "0";
     
-    const scene = document.querySelector(".scene");
+    //get scene height to define animation
+    const scene = document.querySelector<HTMLElement>(".scene");
     const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
+    
+    //get main container and sky background for dynamic removal of foot overhang.
+    const container = document.querySelector<HTMLElement>(".parallax-container");
+    const sky = document.querySelector(".sky");
 
-    gsap.registerPlugin(ScrollTrigger);
+    const parallaxY = -300;
+    // calculates the difference between the background and the lowest parallax element to remove the background
+    // after the scrolled animation 
+    function adjustFoot(){
+        if(!container || !sky){
+            return;
+        }
+        container.style.height='auto'
+        const skyHeight = sky.getBoundingClientRect().height;
+
+        const footHeight = skyHeight - Math.abs(parallaxY);
+
+        container.style.height= `${footHeight}px`;
+    }
+    //calls the foot adjustments as the scroll trigger refreshed for consistent adjustments.
+    ScrollTrigger.addEventListener("refreshInit", adjustFoot);
+    adjustFoot();
+
+    //the main scroll timeline animation
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: ".parallax-container",
@@ -121,7 +143,7 @@ import me from "../assets/me.png";
     });
     tl.fromTo(".scroll-layer", 
         {y:500},
-        {y:-300} 
+        {y:parallaxY} 
     );
 
 </script>
