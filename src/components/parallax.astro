@@ -9,12 +9,11 @@ import me from "../assets/me.png";
 
 ---
 
-<div class="container">
-    
+<div class="parallax-container">
+    <div class="carousel-container">
+        <ProjectCarousel></ProjectCarousel>
+    </div>
     <div class="scene">
-        <div class="carousel-container">
-            <ProjectCarousel></ProjectCarousel>
-        </div>
         <img src={sky.src} alt="" class="sky">
         <div class="scroll-layer m4">  
             <div class="mouse-layer" data-depth="20">
@@ -47,6 +46,10 @@ import me from "../assets/me.png";
 </div>
 
 <style>
+    .parallax-container{
+        box-sizing: border-box;
+        overflow: hidden;
+    }
     .carousel-container{
         z-index: 1;
         position: absolute;
@@ -88,23 +91,32 @@ import me from "../assets/me.png";
         width: 100vw;
         height: 100%;
         object-fit: cover;
+        /* clip-path: inset(0px 0px var(--crop-bottom, 0px) 0px); */
     }
 </style>
 
 <script>
+
+
+    
+
+
+
+    const header = document.querySelector(".header");
+    const headerHeight = header ? window.getComputedStyle(header).height: "0";
     
     const scene = document.querySelector(".scene");
-    const scnHeight = scene ? window.getComputedStyle(scene).height: "0";
-    const height = parseFloat(scnHeight);
+    const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
 
     gsap.registerPlugin(ScrollTrigger);
     const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: ".scene",
-            start:"top top",
+            trigger: ".parallax-container",
+            start:"top -"+ headerHeight+ "px",
             end: "+="+scnHeight,
             pin: true,
-            scrub:true
+            scrub:true,
+            anticipatePin: 1
         }
     });
     tl.fromTo(".scroll-layer", 
