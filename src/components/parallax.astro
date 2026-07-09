@@ -44,7 +44,7 @@ import me from "../assets/me.png";
 
 
 </div>
-
+<!-- Styling for standard viewports -->
 <style>
     body{}
     .parallax-container{
@@ -53,6 +53,7 @@ import me from "../assets/me.png";
     
     }
     .carousel-container{
+        width: 100%;
         z-index: 1;
         position: absolute;
     }
@@ -97,8 +98,21 @@ import me from "../assets/me.png";
         
     }
 </style>
+<!-- Styling for mobile viewports -->
+<style>
+    @media screen and (max-width:780px) and (orientation: portrait) {
+        .parallax-container{
+            height: 100vh;
+        }
+        .scene{
+            height: 100%;
+        }
+    }
+</style>
 
-<script>
+<!-- <script>
+import { int, parse } from "astro:schema";
+
     gsap.registerPlugin(ScrollTrigger);
     //get height of header to define pin start
     const header = document.querySelector(".header");
@@ -106,29 +120,39 @@ import me from "../assets/me.png";
     
     //get scene height to define animation
     const scene = document.querySelector<HTMLElement>(".scene");
-    const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
+    
     
     //get main container and sky background for dynamic removal of foot overhang.
     const container = document.querySelector<HTMLElement>(".parallax-container");
     const sky = document.querySelector(".sky");
-
-    const parallaxY = -300;
+    if(container){
+        console.log(`${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`);
+        container.style.height += `${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`;
+    }
+    const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
+    
+    const project = document.querySelector(".project");
+    var parallaxY = project ? -parseFloat(window.getComputedStyle(project).height): 0;
+    console.log(document.documentElement.clientHeight);
+    if(document.documentElement.clientWidth <= 780){
+        parallaxY = 0;
+    }
     // calculates the difference between the background and the lowest parallax element to remove the background
     // after the scrolled animation 
-    function adjustFoot(){
-        if(!container || !sky){
-            return;
-        }
-        container.style.height='auto'
-        const skyHeight = sky.getBoundingClientRect().height;
+    // function adjustFoot(){
+    //     if(!container || !sky){
+    //         return;
+    //     }
+    //     container.style.height='auto'
+    //     const skyHeight = sky.getBoundingClientRect().height;
 
-        const footHeight = skyHeight - Math.abs(parallaxY);
-
-        container.style.height= `${footHeight}px`;
-    }
-    //calls the foot adjustments as the scroll trigger refreshed for consistent adjustments.
-    ScrollTrigger.addEventListener("refreshInit", adjustFoot);
-    adjustFoot();
+    //     const footHeight = skyHeight - Math.abs(parallaxY);
+    //     if (window.innerWidth)
+    //     container.style.height= `${footHeight}px`;
+    // }
+    // //calls the foot adjustments as the scroll trigger refreshed for consistent adjustments.
+    // ScrollTrigger.addEventListener("refreshInit", adjustFoot);
+    // adjustFoot();
 
     //the main scroll timeline animation
     const tl = gsap.timeline({
@@ -146,4 +170,4 @@ import me from "../assets/me.png";
         {y:parallaxY} 
     );
 
-</script>
+</script> -->
