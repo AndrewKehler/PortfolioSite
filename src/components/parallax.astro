@@ -14,28 +14,28 @@ import me from "../assets/me.png";
         <ProjectCarousel></ProjectCarousel>
     </div>
     <div class="scene">
-        <img src={sky.src} alt="" class="sky">
-        <div class="scroll-layer m4">  
+        <img src={sky.src} alt="" class="sky scn-elmnt">
+        <div class="scroll-layer m4 scn-elmnt">  
             <div class="mouse-layer" data-depth="20">
                 <img src={mtn4.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer m3">  
+        <div class="scroll-layer m3 scn-elmnt">  
             <div class="mouse-layer" data-depth="20">
                 <img src={mtn3.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer m2">  
+        <div class="scroll-layer m2 scn-elmnt">  
             <div class="mouse-layer" data-depth="20">
                 <img src={mtn2.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer m1">  
+        <div class="scroll-layer m1 scn-elmnt">  
             <div class="mouse-layer" data-depth="20">
                 <img src={mtn1.src} alt="" class="foreground-element">
             </div>    
         </div>
-        <div class="scroll-layer me">  
+        <div class="scroll-layer me scn-elmnt">  
             <div class="mouse-layer" data-depth="20">
                 <img src={me.src} alt="" class="foreground-element">
             </div>    
@@ -63,7 +63,7 @@ import me from "../assets/me.png";
     .scene{
         position: relative;
         width: 100vw;
-        height: 100vw;
+        height: 70vw;
         overflow: hidden;
         
     }
@@ -71,10 +71,10 @@ import me from "../assets/me.png";
     .scroll-layer, 
     .mouse-layer {
     position: absolute;
-    top: 0;
+    top: -12%;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110%;
     pointer-events: none;
     }
 
@@ -97,21 +97,35 @@ import me from "../assets/me.png";
         object-fit: cover;
         
     }
+    .scn-elmnt{
+        /* margin-top: 115px; */
+    }
 </style>
-<!-- Styling for mobile viewports -->
+<!-- Styling for mobile viewportsv in portrait -->
 <style>
     @media screen and (max-width:780px) and (orientation: portrait) {
         .parallax-container{
-            height: 100vh;
+            height: 120vh;
         }
         .scene{
             height: 100%;
         }
     }
 </style>
+<!-- Styling for mobile viewportsv in landscape -->
 
-<!-- <script>
-import { int, parse } from "astro:schema";
+<style>
+    @media screen and (max-width:780px) and (orientation: landscape) {
+        .parallax-container{
+            height: 100vw;
+        }
+        .scene{
+            height: 100vw;
+        }
+    }
+</style>
+
+<script>
 
     gsap.registerPlugin(ScrollTrigger);
     //get height of header to define pin start
@@ -121,53 +135,43 @@ import { int, parse } from "astro:schema";
     //get scene height to define animation
     const scene = document.querySelector<HTMLElement>(".scene");
     
+    const elmnts = document.querySelectorAll<HTMLElement>(".scroll-layer");
+    if (elmnts){
+        for (const i of elmnts){
+            i.style.marginTop = headerHeight;
+        }
+    }
     
     //get main container and sky background for dynamic removal of foot overhang.
-    const container = document.querySelector<HTMLElement>(".parallax-container");
-    const sky = document.querySelector(".sky");
-    if(container){
-        console.log(`${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`);
-        container.style.height += `${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`;
-    }
-    const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
-    
-    const project = document.querySelector(".project");
-    var parallaxY = project ? -parseFloat(window.getComputedStyle(project).height): 0;
-    console.log(document.documentElement.clientHeight);
-    if(document.documentElement.clientWidth <= 780){
-        parallaxY = 0;
-    }
-    // calculates the difference between the background and the lowest parallax element to remove the background
-    // after the scrolled animation 
-    // function adjustFoot(){
-    //     if(!container || !sky){
-    //         return;
-    //     }
-    //     container.style.height='auto'
-    //     const skyHeight = sky.getBoundingClientRect().height;
-
-    //     const footHeight = skyHeight - Math.abs(parallaxY);
-    //     if (window.innerWidth)
-    //     container.style.height= `${footHeight}px`;
+    // const container = document.querySelector<HTMLElement>(".parallax-container");
+    // const sky = document.querySelector(".sky");
+    // if(container){
+    //     console.log(`${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`);
+    //     container.style.height += `${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`;
     // }
-    // //calls the foot adjustments as the scroll trigger refreshed for consistent adjustments.
-    // ScrollTrigger.addEventListener("refreshInit", adjustFoot);
-    // adjustFoot();
+    // const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
+    
+    // const project = document.querySelector(".project");
+    // var parallaxY = project ? -parseFloat(window.getComputedStyle(project).height): 0;
+    // console.log(document.documentElement.clientHeight);
+    // if(document.documentElement.clientWidth <= 780){
+    //     parallaxY = 0;
+    // }
 
     //the main scroll timeline animation
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".parallax-container",
-            start:"top -"+ headerHeight+ "px",
-            end: "+="+scnHeight,
-            pin: true,
-            scrub:true,
-            anticipatePin: 1
-        }
-    });
-    tl.fromTo(".scroll-layer", 
-        {y:500},
-        {y:parallaxY} 
-    );
+    // const tl = gsap.timeline({
+    //     scrollTrigger: {
+    //         trigger: ".parallax-container",
+    //         start:"top -"+ headerHeight+ "px",
+    //         end: "+="+scnHeight,
+    //         pin: true,
+    //         scrub:true,
+    //         anticipatePin: 1
+    //     }
+    // });
+    // tl.fromTo(".scroll-layer", 
+    //     {y:500},
+    //     {y:parallaxY} 
+    // );
 
-</script> -->
+</script>
