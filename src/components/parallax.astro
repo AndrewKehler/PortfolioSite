@@ -50,28 +50,31 @@ import me from "../assets/me.png";
     .parallax-container{
         box-sizing: border-box;
         overflow: hidden;
-    
     }
     .carousel-container{
         width: 100%;
         z-index: 1;
         position: absolute;
     }
-    .m3,.m2,.m1,me{
-        z-index: 2;
-    }
+    .me{z-index: 4;}
+    .m1{z-index: 3;}
+    .m2{z-index: 2;}
+    .m3{z-index: 1;}
+    .m4{z-index: 0;}
+    
     .scene{
         position: relative;
         width: 100vw;
         height: 70vw;
         overflow: hidden;
+        box-sizing: border-box;
         
     }
 
     .scroll-layer, 
     .mouse-layer {
     position: absolute;
-    top: -12%;
+    top: -13%;
     left: 0;
     width: 100%;
     height: 110%;
@@ -113,7 +116,6 @@ import me from "../assets/me.png";
     }
 </style>
 <!-- Styling for mobile viewportsv in landscape -->
-
 <style>
     @media screen and (max-width:780px) and (orientation: landscape) {
         .parallax-container{
@@ -134,44 +136,45 @@ import me from "../assets/me.png";
     
     //get scene height to define animation
     const scene = document.querySelector<HTMLElement>(".scene");
-    
+    const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
+
     const elmnts = document.querySelectorAll<HTMLElement>(".scroll-layer");
     if (elmnts){
         for (const i of elmnts){
             i.style.marginTop = headerHeight;
         }
     }
-    
-    //get main container and sky background for dynamic removal of foot overhang.
-    // const container = document.querySelector<HTMLElement>(".parallax-container");
-    // const sky = document.querySelector(".sky");
-    // if(container){
-    //     console.log(`${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`);
-    //     container.style.height += `${parseFloat(window.getComputedStyle(container).height) + parseFloat(headerHeight)}px`;
-    // }
-    // const scnHeight = scene ? parseFloat(window.getComputedStyle(scene).height): 0;
-    
-    // const project = document.querySelector(".project");
-    // var parallaxY = project ? -parseFloat(window.getComputedStyle(project).height): 0;
-    // console.log(document.documentElement.clientHeight);
-    // if(document.documentElement.clientWidth <= 780){
-    //     parallaxY = 0;
-    // }
 
     //the main scroll timeline animation
-    // const tl = gsap.timeline({
-    //     scrollTrigger: {
-    //         trigger: ".parallax-container",
-    //         start:"top -"+ headerHeight+ "px",
-    //         end: "+="+scnHeight,
-    //         pin: true,
-    //         scrub:true,
-    //         anticipatePin: 1
-    //     }
-    // });
-    // tl.fromTo(".scroll-layer", 
-    //     {y:500},
-    //     {y:parallaxY} 
-    // );
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".parallax-container",
+            start:"top -"+ headerHeight+ "px",
+            end: "+="+scnHeight,
+            pin: true,
+            scrub:true,
+            anticipatePin: 1
+        }
+    });
+    tl.from(".me", 
+        {yPercent:50},
+        {yPercent:0} 
+    )
+    .from(".m1", 
+        {yPercent:75},
+        {yPercent:0} 
+    )
+    .from(".m2", 
+        {yPercent:100},
+        {yPercent:0} 
+    )
+    .from(".m3", 
+        {yPercent:115},
+        {yPercent:0} 
+    )
+    .from(".m4", 
+        {yPercent:130},
+        {yPercent:0} 
+    );
 
 </script>
