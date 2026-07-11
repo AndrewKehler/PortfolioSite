@@ -21,6 +21,7 @@
 </div>
 
 <style>
+    /* Standard viewport stylings */
     .container{
         overflow: hidden;
     }
@@ -68,6 +69,8 @@
 </style>
 
 <style>
+    /* styling for mobile viewports */
+
     @media screen and (max-width:780px){
         .carousel-track{ 
             height: 50vw;
@@ -103,7 +106,7 @@
         paddingRight: gapVal,
         reversed: true
     });
-
+    // adds the looping carousel animation to each project.
     projects.forEach((prjct: { addEventListener: (arg0: string, arg1: () => void) => void; })=> {
         prjct.addEventListener("mouseenter", () => {
             gsap.to(loop, { timeScale: -.5, duration: 0.5, overwrite: true });

@@ -23,6 +23,8 @@ import headshot from "../assets/AndrewKehler.png";
 
 
 <style>
+    /* Standard viewport stylings */
+
 	@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 	
 
@@ -81,6 +83,8 @@ import headshot from "../assets/AndrewKehler.png";
 </style>
 
 <style>
+    /* Styling for mobile viewports in portrait */
+
     @media screen and (max-width:780px) and (orientation: portrait){
         .landing{
             justify-content: center;
@@ -128,6 +132,7 @@ import headshot from "../assets/AndrewKehler.png";
     const subHead = titleCardElements ? titleCardElements[0]: null;
     const header = titleCardElements ? titleCardElements[1]: null;
     const buttons = titleCardElements ? titleCardElements[2]: null;
+    //Main intro animation for squares, buttons, and headshot.
     introTimeline.fromTo( subHead,
         {
             opacity:0
