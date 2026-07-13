@@ -20,7 +20,9 @@
         height: 20vw;
         flex: 0 0 20vw;
         justify-content: center;
+        align-items: center;
         box-shadow: -13px 13px 0px 3px #312875;
+        cursor:pointer;
     }
     .project::after{
         content: "";
@@ -28,14 +30,26 @@
         width: 100%;
         height: 100%;
         background-color: #4a497e6c;
+        opacity: 1;
+        transition: 500ms;
     }
+    .project:hover::after{
+        opacity: 0;
+    }
+    
     p{
         font-family: graduate;
-        font-size: 2em;
+        font-size: 2.5em;
         position: absolute;
         align-self: center;
+        text-align: center;
         color: white;
         z-index: 1;
+        opacity: 1;
+        transition: 500ms;
+    }
+    .project:hover>p{
+        opacity: 0;
     }
     img{
         width: 100%;
