@@ -6,7 +6,6 @@ import mtn2 from "../assets/parallax/mtn2.png";
 import mtn3 from "../assets/parallax/mtn3.png";
 import mtn4 from "../assets/parallax/mtn4.png";
 import me from "../assets/parallax/me.png";
-
 ---
 
 <div class="parallax-container">
@@ -39,6 +38,13 @@ import me from "../assets/parallax/me.png";
             <div class="mouse-layer" data-depth="7">
                 <img src={me.src} alt="" class="foreground-element">
             </div>    
+        </div>
+        <div class="about-me">
+            <h2>A Little About Me</h2>
+            <div class="text">
+                <p> I'm a creative, passionate learner with a serious drive to create. All things nature inspires me. 
+                    I love to get technical and get obsessed when I encounter a problem I haven't faced yet.</p>
+            </div>
         </div>
     </div>
 
@@ -101,8 +107,33 @@ import me from "../assets/parallax/me.png";
         object-fit: cover;
         
     }
-    .scn-elmnt{
-        /* margin-top: 115px; */
+    .about-me{
+        flex-direction: column;
+        position: absolute;
+        width: 30%;
+        height: 35%;
+        z-index: 4;
+        display: flex;
+        top: 55%;
+        left: 15%;
+        opacity: 0;
+    }
+    .about-me>h2{
+        font-family: graduate;
+        color: white;
+        margin-left: 5%;
+        font-size: 2.5em;
+    }
+    .text{
+        position: relative;
+        box-shadow: inset 1px 1px 5px 5px rgba(0, 0, 0, 0.411);
+        padding: 20px;
+        background-color: white;
+        height: 100%;
+        border-radius: 50px;
+		font-family:"Intel One Mono", monospace;
+        opacity: 95%;
+        /* border:  solid 10px; */
     }
 </style>
 
@@ -131,6 +162,8 @@ import me from "../assets/parallax/me.png";
 </style>
 
 <script>
+import { startsWith } from "astro:schema";
+
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -204,5 +237,22 @@ import me from "../assets/parallax/me.png";
 
     });
 
+    //animation for about me
+    gsap.fromTo(".about-me",
+        {
+            opacity: 0,  
+        },
+        {
+            opacity:1,
+            duration:2,
+            ease: "power2.out",
+            scrollTrigger:{
+                trigger: ".pin-spacer",
+                start: () => ScrollTrigger.maxScroll(window) - 10,
+                toggleActions: "play none none reverse",
+                invalidateOnRefresh: true 
+            }
+        }
+    );
 
 </script>

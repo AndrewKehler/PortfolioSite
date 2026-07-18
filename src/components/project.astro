@@ -21,9 +21,9 @@
         flex: 0 0 20vw;
         justify-content: center;
         align-items: center;
-        box-shadow: -13px 13px 0px 3px #312875;
         cursor:pointer;
     }
+
     .project::after{
         content: "";
         position: absolute;
@@ -32,9 +32,12 @@
         background-color: #4a497e6c;
         opacity: 1;
         transition: 500ms;
+        box-shadow: -13px 13px 0px 3px #312875;
+
     }
     .project:hover::after{
-        opacity: 0;
+        background-color: #4a497e00;
+        box-shadow: -3px 4px 0px 3px #312875;
     }
     
     p{
@@ -55,8 +58,17 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
+    } 
+    
+</style>
 
-    
-    
+<style>
+    @media screen and (max-width:780px) {
+        p{
+            font-size: clamp(5px, .8em, 2.5em);
+        }
+        .project::after{
+            box-shadow: -7px 7px 0px 3px #312875;
+        }
+    }
 </style>
