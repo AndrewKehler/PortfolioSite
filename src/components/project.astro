@@ -42,7 +42,7 @@
     
     p{
         font-family: graduate;
-        font-size: 2.5em;
+        font-size: clamp(.8em, 2.5vw, 2.5em);
         position: absolute;
         align-self: center;
         text-align: center;
@@ -65,7 +65,7 @@
 <style>
     @media screen and (max-width:780px) {
         p{
-            font-size: clamp(5px, .8em, 2.5em);
+            /* font-size: clamp(5px, 3.5vw, 2.5em); */
         }
         .project::after{
             box-shadow: -7px 7px 0px 3px #312875;
