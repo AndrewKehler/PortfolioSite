@@ -1,13 +1,12 @@
 ---
  const {name} = Astro.props;
- let path = '../assets/projects/' + name + '.webp';
  const images = import.meta.glob('../assets/projects/*.{webp,jpg,jpeg,png}', { eager: true });
  const imageEntry = images[`../assets/projects/${name}.png`];
  const image = imageEntry.default;
 ---
 
 
-<div class="project">
+<div class="project" data-name={name}>
     <p>{name}</p>
     <img src={image.src} alt="">
 </div>
@@ -77,3 +76,14 @@
         }
     }
 </style>
+
+<script>
+    const projects = document.querySelectorAll<HTMLElement>(".project");
+    for(let i = 0; i <projects.length; i++){
+        projects[i]?.addEventListener('click', ()=>{
+        window.location.href = "http://localhost:4321/PortfolioSite/" + projects[i].dataset.name;
+    })
+
+    }
+    
+</script>
