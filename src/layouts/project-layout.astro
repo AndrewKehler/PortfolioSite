@@ -18,7 +18,7 @@ const image = imageEntry.default;
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <div class="header" style=`background-image: url(${image.src});`>
+    <div class="header" style=`background-image: url("${encodeURI(image.src)}");`>
         <h2>{name}</h2>
     </div>
     <div class="content">
@@ -37,7 +37,6 @@ const image = imageEntry.default;
 		font-style: normal;
 	}
 	body{
-		background-color: rgb(250, 250, 250);
 		margin: 0;
 		overflow-x: hidden;
 		
@@ -63,8 +62,9 @@ const image = imageEntry.default;
     }
     .content{
         width: 100%;
-        height: 100vh;
+        height: fit-content;
         position: relative;
+        padding-bottom: 3%;
         background-color: color-mix(in srgb, var(--primary) 10%, white 90%);
         align-items: center;
     }
