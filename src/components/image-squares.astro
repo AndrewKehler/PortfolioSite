@@ -1,0 +1,94 @@
+---
+const {colour} = Astro.props;
+
+const squares = [
+    {id:"zero", width:"80%", top: "20%", left:"10%", startX:"40", startY:"40", delay:".3"},
+    {id:"one", width:"24%", top:"33%", left:"5%", startX:"-60", startY:"0", delay:".5"},
+    {id:"one", width:"24%", top:"76%", left:"5%", startX:"60", startY:"50", delay:".35"},
+    {id:"one", width:"24%", top:"6%", left:"60%", startX:"60", startY:"-100", delay:".5"},
+    {id:"one", width:"24%", top:"63%", left:"72%", startX:"100", startY:"60", delay:".6"},
+    {id:"two", width:"13%", top:"11%", left:"20%", startX:"-50", startY:"-30", delay:".25"},
+    {id:"two", width:"13%", top:"-2%", left:"40%", startX:"0", startY:"-20", delay:".7"},
+    {id:"two", width:"13%", top:"90%", left:"-14%", startX:"0", startY:"30", delay:"1"},
+    {id:"three", width:"11%", top:"50%", left:"65%", startX:"30", startY:"0", delay:".6"},
+    {id:"three", width:"11%", top:"70%", left:"-8%", startX:"-20", startY:"10", delay:".8"},
+    {id:"three", width:"11%", top:"33%", left:"83%", startX:"40", startY:"0", delay:".3"},
+    {id:"three", width:"11%", top:"63%", left:"24%", startX:"15", startY:"0", delay:"1"}
+];
+---
+
+
+<div class="container" aria-hidden="true">
+    {squares.map((square) =>(
+        <div
+            class=`header-square ${square.id}`
+            style=`
+                position:absolute;
+                width:${square.width}; 
+                height:${square.width}; 
+                top:${square.top};
+                left:${square.left};`
+            data-start-x=`${square.startX}`
+            data-start-y=`${square.startY}`
+            data-delay=`${square.delay}`
+        ></div>
+
+    ))}
+
+</div>
+
+
+<style define:vars={{colour}}>
+    .container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: -1;   
+    }
+    .zero{
+        background: hsl(from var(--colour) h s 97);
+    }
+    .one{
+        background: hsl(from var(--colour) h 35 70);
+    }
+    .two{
+        background: hsl(from var(--colour) h s 80);
+    }
+    .three{
+        background: hsl(from var(--colour) h 78 89);
+    }
+</style>
+
+
+<!-- <script>
+    const squares = document.querySelectorAll<HTMLDivElement>(".header-square");
+
+    squares.forEach((square) => {
+        const delay = parseFloat(square.dataset.delay || "0") + .8;
+        const startX = parseFloat(square.dataset.startX || "0");
+        const startY = parseFloat(square.dataset.startY || "0");
+
+        gsap.fromTo(
+            square,
+            {
+                opacity:0,
+                x:startX,
+                y:startY
+            },
+            {
+                opacity:1,
+                x:0,
+                y:0,
+                duration:1,
+                delay:delay
+                
+            }
+        )
+
+    })
+
+    
+
+</script> -->
+

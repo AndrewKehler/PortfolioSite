@@ -1,5 +1,7 @@
 ---
 import ProjectLayout from "../layouts/project-layout.astro";
+import Image from "../components/image.astro";
+import snppyImg from "../assets/projects/pages/snappy-trnsprnt.png"
 ---
 
 <ProjectLayout name="snappy" colour="#6bc4ff">
@@ -10,6 +12,7 @@ import ProjectLayout from "../layouts/project-layout.astro";
 
         </p>
     </div>
+    <Image src={snppyImg.src} colour="#6bc4ff" class="snppyImg"></Image>
 
     <div class="paragraph">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sapien arcu, 
@@ -17,3 +20,10 @@ import ProjectLayout from "../layouts/project-layout.astro";
             Nunc tempor sapien sit amet ex commodo, eu convallis turpi</p>
     </div>
 </ProjectLayout>
+
+<style>
+    .snppyImg{
+        position: relative;
+        width: 20%;
+    }
+</style>

@@ -1,0 +1,21 @@
+---
+import ImageSquares from "./image-squares.astro";
+const {colour} = Astro.props;
+const {src} = Astro.props;
+const {class: className, ...rest} = Astro.props;
+
+---
+
+<div class={className} {...rest}>
+    <img src=`${src}` alt="" style="position: relative;">
+    <ImageSquares colour=`${colour}`></ImageSquares>
+</div>
+
+<style>
+
+    img{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
