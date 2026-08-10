@@ -21,7 +21,7 @@ const squares = [
 <div class="container" aria-hidden="true">
     {squares.map((square) =>(
         <div
-            class=`header-square ${square.id}`
+            class=`image-square ${square.id}`
             style=`
                 position:absolute;
                 width:${square.width}; 
@@ -59,6 +59,16 @@ const squares = [
         background: hsl(from var(--colour) h 78 89);
     }
 </style>
+
+<script>
+    const squares = document.querySelectorAll<HTMLElement>(".image-square");
+
+    squares.forEach((square)=> {
+        const width = window.getComputedStyle(square).getPropertyValue("width");
+        square.style.height = width;
+    })
+
+</script>
 
 
 <!-- <script>
