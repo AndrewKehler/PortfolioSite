@@ -1,29 +1,21 @@
 ---
+
+
 import LandingHeader from "../components/landing-header.astro"
 import ProjectCarousel from "../components/project-carousel.astro"
 import Parallax from "../components/parallax.astro"
+import { ClientRouter } from "astro:transitions";
+import BaseLayout from "../layouts/base-layout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-	
-</head>
-<body>
+<BaseLayout>
 	<LandingHeader></LandingHeader>
 	<Parallax></Parallax>
-</body>
-</html>
+</BaseLayout>
 
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
-	
+
 	.graduate-regular {
 		font-family: "Graduate", serif;
 		font-weight: 400;

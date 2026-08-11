@@ -1,7 +1,10 @@
 ---
 import ProjectLayout from "../layouts/project-layout.astro";
+import Button1 from "../components/button1.astro";
 import Image from "../components/image.astro";
-import snppyImg from "../assets/projects/pages/snappy-trnsprnt.png"
+import snppyImg from "../assets/projects/page-images/snappy-trnsprnt.png"
+import mowerBoard from "../assets/projects/page-images/mowerboard.png"
+import simImg from "../assets/projects/page-images/sim.png"
 ---
 
 <ProjectLayout name="snappy" colour="#6bc4ff">
@@ -17,16 +20,64 @@ import snppyImg from "../assets/projects/pages/snappy-trnsprnt.png"
     <div class="paragraph">
         <p>This project has developed my skills in several real world software techniques including version management, communication, prototyping, and 
             tackling learning curves. Through my time being a part of the team, I grew competent in C, C++, ROS2, Git, Gazebo, SDF, Linux systems, and had hands 
-            on experience with STM, PID control, hydrodynamics, machine learning, 
+            on experience with STM, PID control, hydrodynamics, and machine learning. 
         </p>
+    </div>
+    <Image src={mowerBoard.src} colour="#6bc4ff" class="mowerImg"></Image>
+    <div class="paragraph">
+        <p>
+            The project I worked on for the latter half of my contributions was on a simulator that could be used to visualized and test different parts of the software 
+            for the sub. The methods implemented will help streamline future subs by allowing us to test software in an environment removed from mechanical and electrical 
+            components. 
+        </p>
+    </div>
+    <Image src={simImg.src} colour="#6bc4ff" class="simImg"></Image>
+    <div class="btn">
+        <Button1 href="https://github.com/uvic-auvic/snappy-nano">See Project</Button1>
     </div>
 </ProjectLayout>
 
 <style>
+    
     .snppyImg{
         position: relative;
-        width: 20%;
+        width: 25%;
         justify-self: flex-end;
         margin: -5% -5% 0 0;
+        transform: scaleX(-1);
+    }
+    .snppyImg :global(img){
+        transform: scaleX(-1);
+    }
+    .mowerImg{
+        position: relative;
+        width: 25%;
+        justify-self: flex-start;
+        margin: 0 0 0 -5%;
+    }
+    .mowerImg :global(img){
+        transform: scaleX(-1);
+    }
+    .simImg{
+        position: relative;
+        width: 25%;
+        justify-self: flex-end;
+        margin: 2% -5% 0 0;
+        transform: scaleX(-1);
+    }
+    .simImg :global(img){
+        transform: scale(-65%, 65%);
+        border-radius: 10px;
+        margin-bottom: -10%;
+    }
+
+
+    .btn{
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        justify-content: center;
+        width: 100%;
+        font-size: clamp(.5em, 0.8vw, 2em);
     }
 </style>

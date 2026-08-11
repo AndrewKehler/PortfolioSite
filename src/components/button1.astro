@@ -1,7 +1,8 @@
 ---
+const {href} = Astro.props;
 ---
 
-<button>
+<button onclick=`window.location.href= "${href}";`>
     <slot></slot>
 </button>
 
