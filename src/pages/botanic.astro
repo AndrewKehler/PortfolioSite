@@ -1,5 +1,59 @@
 ---
 import ProjectLayout from "../layouts/project-layout.astro"
+import Button1 from "../components/button1.astro"
+import Image from "../components/image.astro"
+
+import playerImg from "../assets/projects/page-images/botanicPlayer.png"
 ---
 
-<ProjectLayout name="botanic" colour="blue"></ProjectLayout>
+<ProjectLayout name="botanic" colour="#185188">
+    <div class="paragraph">
+        <p>
+            Botanic was a combined capstone and district authority award project. 
+            I spent around a combined 130 hours creating this website and songs from scratch. 
+            The audio player was built in JavaScript using the audioCTX API. 
+            The background and icons were animated using the anime.js where I created shapes 
+            in Adobe Illustrator and animated the SVG paths in JavaScript. 
+        </p>
+        
+    </div>
+    <Image src={playerImg.src} colour="#245460" class="playerImg"></Image>
+
+    <div class="paragraph">
+        <p>
+            The songs were all composed and arranged by me in Ableton Live Lite 11 as a 
+            journey of inspiration for creating art. This project let me discover the ways 
+            I like to create art and helped my diagnose where I find the biggest obstacles 
+            while allowing me to combine the two areas of creation I find the most enjoyable. 
+            Music and Computer Science.
+        </p>
+    </div>
+
+    <div class="btn">
+        <Button1 href="https://andrewkehler.github.io/Botanic">See Project</Button1>
+    </div>
+</ProjectLayout>
+
+<style>
+    .btn{
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        justify-content: center;
+        width: 100%;
+        font-size: clamp(.5em, 0.8vw, 2em);
+    }
+
+    .playerImg{
+        position: relative;
+        width: 25%;
+        justify-self: flex-end;
+        margin: -5% -5% 0 0;
+        transform: scaleX(-1);
+    }
+    .playerImg :global(img){
+        transform: scaleX(-1);
+        margin-top: 5%;
+        padding-top: 8%;
+    }
+</style>
