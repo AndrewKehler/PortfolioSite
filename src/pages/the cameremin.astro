@@ -1,6 +1,10 @@
 ---
 import ProjectLayout from "../layouts/project-layout.astro";
 import Button1 from "../components/button1.astro";
+import Image from "../components/image.astro";
+
+import handLandmarks from "../assets/projects/page-images/handLandmarks.png"
+import camDemo from "../assets/projects/page-images/cmrmindemo.gif"
 ---
 
 <ProjectLayout name="the cameremin" colour="#75ba75">
@@ -10,7 +14,7 @@ import Button1 from "../components/button1.astro";
         algorithms can do. It combines the OpenCV python plugin with Max/MSP to convert hand positioning
         into sound.
     </p>
-
+    
     <p>
         The python code implements OpenCV to start a video feed using a webcam or external camera.
         Then it uses MediaPipe to scan each photo in the video feed for hands. Its tuned to track two hands. 
@@ -18,6 +22,7 @@ import Button1 from "../components/button1.astro";
         Points are adjusted to highlight the index fingers and thumbs, which are the main control 
         features for the instrument.
     </p>
+    <Image src={handLandmarks.src} colour="#75ba75" class="landmarks"></Image>
     <p>
         For the right hand, the position of the thumb is described in 2D space, via the resolution
         of the camera, and the Y value is encoded into OSC and sent over a UDP localhost socket server
@@ -27,20 +32,20 @@ import Button1 from "../components/button1.astro";
 
     <p>
         The distance between the index and thumb for both hands are drawn and calculated using a simple
-        distance equation. The value of the right hand is used to adjust the volume, where a larger distance
+        distance equation. The value of the left hand is used to adjust the volume, where a larger distance
         between fingers is a quieter sound, and a smaller distance is louder. Although the decisions may feel
         less intuitive, the reverse is particularily harder to create responsive dynamics when playing the instrument.
     </p>
-
+    <Image src={camDemo.src} colour="#75ba75", class="camDemo"></Image>
     <p>
-        In the left hand, the distance between the index and thumb is used to control the vibrato of the instrument where
+        In the right hand, the distance between the index and thumb is used to control the vibrato of the instrument where
         an increase of distance increases the vibrato, and a decrease does the reverse.
         
     </p>
     <p>For a more detailed analysis on the creation of each part, the paper on this project, or the 
-        code contained in the repo, are below.
+        code contained in the repo, are below. 
     </p>
-
+    <span></span>
     <div class="btn">
         <Button1 href="https://github.com/AndrewKehler/cameremin/blob/main/The%20Cameremin(Camera%20Theremin).pdf">See Paper</Button1>
         <Button1 href="https://github.com/AndrewKehler/cameremin">See Project</Button1>
@@ -57,5 +62,30 @@ import Button1 from "../components/button1.astro";
         justify-content: center;
         width: 100%;
         font-size: clamp(.5em, 0.8vw, 2em);
+    }
+
+    .camDemo{
+        position: relative;
+        width: 25%;
+        justify-self: flex-start;
+        margin: -1% 0 0 -8%;
+        padding: 7% 0 4% 0;
+        /* transform: scaleX(-1); */
+    }
+    .camDemo :global(img){
+        width: 85%;
+        margin: 0% 0% -10% 8%;
+        border-radius: 20%;
+        /* transform: scaleX(-1); */
+    }
+    .landmarks{
+        position: relative;
+        width: 25%;
+        justify-self: flex-end;
+        margin: -3% -8% 0 0;
+        transform: scaleX(-1);
+    }
+    .landmarks :global(img){
+        transform: scaleX(-1);
     }
 </style>
