@@ -1,6 +1,12 @@
 ---
 import ProjectLayout from "../layouts/project-layout.astro"
 import Button1 from "../components/button1.astro"
+import Image from "../components/image.astro"
+
+import notesRoom from "../assets/projects/page-images/notesRoom.png"
+import matchBox from "../assets/projects/page-images/MatchBox.png"
+
+
 ---
 
 <ProjectLayout name="notes escape room" colour="#7c1717">
@@ -12,14 +18,14 @@ import Button1 from "../components/button1.astro"
         by implementing custom classes and objects within Godot to streamline each process, Notes Escape Room will be the
         first room designed using my processes.
     </p>
-
+    <Image src={notesRoom.src} colour="#7c1717" class="notesRoom"></Image>
     <p>
         This project is being developed inside of Godot using C# and is putting my abilities to plan coherently
         and effectively to the test. It's allowing me to utilize a lot of the theoretical knowledge I have
         gained about computer science by allowing me to create efficient abstract data types and algorithms.
         In the end I'll end up with an engaging and fun way to demonstrate my abilities in several areas at once.
     </p>
-
+    <Image src={matchBox.src} colour="#7c1717" class="matchBox"></Image>
     <p>
         Once the project is completed it will be exported to its own GitHub page in a way that will allow it to
         be embedded into other projects and played in whatever site I choose to place it inside of. To see the current
@@ -39,5 +45,26 @@ import Button1 from "../components/button1.astro"
         justify-content: center;
         width: 100%;
         font-size: clamp(.5em, 0.8vw, 2em);
+    }
+
+    .notesRoom{
+        position: relative;
+        width: 25%;
+        justify-self: flex-end;
+        margin: -5% -5% 0 0;
+        transform: scaleX(-1);
+    }
+    .notesRoom :global(img){
+        width: 105%;
+        margin-bottom: -7%;
+        padding-top: 7%;
+    }
+
+    .matchBox{
+        position: relative;
+        width: 25%;
+        justify-self: flex-start;
+        margin: -2% 0 0 0;
+        /* transform: scaleX(-1); */
     }
 </style>
