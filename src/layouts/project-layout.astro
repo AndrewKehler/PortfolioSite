@@ -23,37 +23,13 @@ const image = imageEntry.default;
     </div>  
 </BaseLayout>
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
-
-	.graduate-regular {
-		font-family: "Graduate", serif;
-		font-weight: 400;
-		font-style: normal;
-	}
-	body{
+    body{
 		margin: 0;
 		overflow-x: hidden;
 		
 	}
-
-</style>
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Graduate&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
-
-	.graduate-regular {
-		font-family: "Graduate", serif;
-		font-weight: 400;
-		font-style: normal;
-	}
-	body{
-		margin: 0;
-		overflow-x: hidden;
-		
-	}
-
     .nav{
-        font-family: "Graduate", serif;
+        font-family: var(--font-display);
         position: absolute;
         right: 0;
         top: 0;
@@ -91,7 +67,7 @@ const image = imageEntry.default;
         justify-content: center;
         display: flex;
         color: white;
-        font-family: "Graduate", serif;
+        font-family: var(--font-display);
         font-size: 3.5em;
     }
     .content{
@@ -124,7 +100,7 @@ const image = imageEntry.default;
         z-index: 2;
         padding: clamp(1em, 3%, 4em) clamp(1em, 9%, 9em) clamp(1em, 3%, 4em) clamp(1em, 9%, 9em);
         position: relative;
-        font-family:"Intel One Mono", monospace;
+        font-family: var(--font-mono);
         font-size: clamp(.5rem, 1.5vw, 2rem);
         box-shadow: #0000000c 0px 0px 15px 1px;
     }
