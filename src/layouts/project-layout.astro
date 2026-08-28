@@ -68,15 +68,20 @@ const image = imageEntry.default;
         display: flex;
         color: white;
         font-family: var(--font-display);
-        font-size: 3.5em;
+        font-size: clamp(2em, 2vw, 3.5em);
+    }
+    .header>h2{
+        margin-bottom: min(15%, 74px);
     }
     .content{
+        display: flex;
         width: 100%;
         height: fit-content;
         position: relative;
         padding-bottom: 3%;
         background-color: color-mix(in srgb, var(--primary) 10%, white 90%);
         align-items: center;
+        justify-content: center;
     }
     .content::before{
         content: "";
@@ -96,12 +101,13 @@ const image = imageEntry.default;
         background-color: white;
         border-radius: 30px;
         align-self: center;
-        justify-self: center;
         z-index: 2;
         padding: clamp(1em, 3%, 4em) clamp(1em, 9%, 9em) clamp(1em, 3%, 4em) clamp(1em, 9%, 9em);
         position: relative;
         font-family: var(--font-mono);
-        font-size: clamp(.5rem, 1.5vw, 2rem);
+        font-size: clamp(.7rem, 1.5vw, 2rem);
         box-shadow: #0000000c 0px 0px 15px 1px;
+        display: inline-grid;
+        -moz
     }
 </style>

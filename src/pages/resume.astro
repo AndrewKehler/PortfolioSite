@@ -1,0 +1,13 @@
+---
+import type { APIRoute } from 'astro';
+
+import BaseLayout from "../layouts/base-layout.astro";
+import Resume from "/Resume0626.pdf";
+// 
+---
+
+<BaseLayout>
+    <!-- https://www.africau.edu/images/default/sample.pdf -->
+    <iframe src="/Resume0626.pdf" width="100vw" height="100vh" style="border: none;"></iframe>
+    <!-- <embed src="/Resume0626.pdf" width="100vw" height="100vh" style="border: none;"> -->
+</BaseLayout>
