@@ -1,13 +1,52 @@
 ---
-import type { APIRoute } from 'astro';
-
 import BaseLayout from "../layouts/base-layout.astro";
-import Resume from "/Resume0626.pdf";
-// 
+
+import Resume from "../assets/Resume0626.png";
 ---
 
 <BaseLayout>
-    <!-- https://www.africau.edu/images/default/sample.pdf -->
-    <iframe src="/Resume0626.pdf" width="100vw" height="100vh" style="border: none;"></iframe>
-    <!-- <embed src="/Resume0626.pdf" width="100vw" height="100vh" style="border: none;"> -->
+      <div class="nav">
+        <a href="https://andrewkehler.github.io/PortfolioSite">Home</a>
+    </div>
+    <div class="" style=`width: 100vw; height:100%;`>
+        <img src={Resume.src} alt="" style="width: 100%; height: 100%;">
+    </div>
 </BaseLayout>
+
+<style>
+     body{
+		margin: 0;
+		overflow-x: hidden;
+		
+	}
+    .nav{
+        font-family: var(--font-display);
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 10px 50px 0 0;
+    }
+    .nav>a:visited,a:link{
+        font-size: clamp(1em,1.5vw,3em);
+        color: #030303b8;
+        text-decoration: none;
+        transition: .5s;
+    }
+    .nav>a:hover{
+        color: #030303b8;;
+        transition: .5s;
+    }
+    .nav>a::after{
+        position: absolute;
+        content: "";
+        width: 0%;
+        height: 2px;
+        background: #030303b8;;
+        left: 0;
+        top: 100%;
+        transition: .8s;
+    }
+    .nav>a:hover::after{
+        width: 100%;
+    }
+</style>
